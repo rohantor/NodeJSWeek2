@@ -1,8 +1,7 @@
 week2 mysql
 Week 2 of nodejs training
 
-MySQL
-
+Mysql user table and role table management
 
 
 ////////////////////////////////////////////////
@@ -13,8 +12,9 @@ Role
 ////////////////////////////////////////////////
 
 POST
-Create new Role
+Create a new Role
 http://localhost:3000/role
+
 This request create a new role in role table of week2mysql database.
 
 
@@ -47,8 +47,7 @@ http://localhost:3000/role?id=1
 
 Query Params id
 
-
-
+Response :
 {"id":1,"name":"super admin","createdAt":"2023-03-16T09:43:00.000Z","updatedAt":"2023-03-16T09:43:00.000Z","createdBy":1,"updatedBy":1,"deletedBy":null,"deleteAt":null}
 ////////////////////////////////////////////////
 
@@ -57,20 +56,20 @@ PUT
 update role
 http://localhost:3000/role
 
+updates the role using id specified in the the request body .
 
 Body format 
 {
-     "name":string,
-    "createdAt": datetime,
-    "createdBy": number,
-    id:number,
-    "updatedAt": datetime,
-    "updatedBy": number
+     "name":string,  required
+    "createdAt": datetime, required
+    "createdBy": number, required
+    id:number,   required
+    "updatedAt": datetime, required
+    "updatedBy": number required
 }
 json
 {
     "name": "Testuser",
-    
     "createdAt":"2023-03-16 15:13:00",
     "createdBy":2,
     "id":3,
@@ -85,7 +84,7 @@ json
 PATCH
 update role
 http://localhost:3000/role
-Add request description…
+Update a role with id but with options parameters 
 Body format 
 {
      "name":string, optional
@@ -98,9 +97,7 @@ Body format
 text
 {
     "name": "Testuser3",
-
-    "id":3
-  
+    "id":3 
     
 }
 
@@ -115,15 +112,15 @@ User
 POST
 create new user
 http://localhost:3000/user
-
+create new user in user table in week2mysql
 Body format {
-    "username":"string",
-    "password":"string",
-    "roleid":number,
-    "createdAt":datetime,
-    "updatedAt":datetime,
-    "createdBy" : number,
-    "updatedBy":number
+    "username":"string", required
+    "password":"string", required
+    "roleid":number, required
+    "createdAt":datetime, required
+    "updatedAt":datetime, required
+    "createdBy" : number, required
+    "updatedBy":number required
 }
 json
 {
@@ -141,45 +138,139 @@ json
 GET
 get user by id
 http://localhost:3000/user?id=2
-Add request description…
+Get a user information by using id 
 Query Params
 id
 2
-////////////////////////////////////////////////
 
-GET
-pagination
-http://localhost:3000/user?page=1&limit=10
-
-Query Params
-
-page
-1
-
-limit
-10
+Response
+[
+    {
+        "id": 2,
+        "username": "Rohan",
+        "role": "user",
+        "createdAt": "2023-03-16T09:43:00.000Z",
+        "updatedAt": "2023-03-16T09:43:00.000Z",
+        "createdBy": "nikhil",
+        "updatedBy": "Rohan"
+    }
+]
 ////////////////////////////////////////////////
 
 GET
 get All users
 http://localhost:3000/user?limit=10&offset=5&order=desc&orderCol=id
-
+Get user data using query params 
 Query Params
 limit
-10
-
 offset
-5
-
 order
 desc
-
 orderCol
 id
+
+
+
+Response
+[
+    {
+        "id": 298,
+        "username": "Aleem",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 297,
+        "username": "Aled",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 296,
+        "username": "Alec",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 295,
+        "username": "Aldred",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 294,
+        "username": "Albie",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 293,
+        "username": "Albert",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 292,
+        "username": "Alber",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 291,
+        "username": "Alastair",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 290,
+        "username": "Alasdair",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    },
+    {
+        "id": 289,
+        "username": "Alanas",
+        "role": "user",
+        "createdAt": "2023-03-17T03:43:38.000Z",
+        "updatedAt": "2023-03-17T03:43:38.000Z",
+        "createdBy": "Rohan",
+        "updatedBy": "Rohan"
+    }
+]
+
+
 ////////////////////////////////////////////////
 PUT
 update user
 http://localhost:3000/user
+update a user all parameters are required
 Body format {
     "username":"string",
     "password":"string",
@@ -207,6 +298,8 @@ json
 
 PATCH
 update user
+
+update a user with optional parameters
 Body format {
     "username":"string", optional
     "password":"string",optional
