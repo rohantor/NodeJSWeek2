@@ -1,0 +1,227 @@
+week2 mysql
+Week 2 of nodejs training
+
+MySQL
+
+
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+Role
+
+////////////////////////////////////////////////
+
+POST
+Create new Role
+http://localhost:3000/role
+This request create a new role in role table of week2mysql database.
+
+
+
+Body format 
+{
+     "name":string,
+    "createdAt": datetime,
+    "createdBy": number,
+    "updatedAt": datetime,
+    "updatedBy": number
+}
+
+json
+{
+    "name":"testuser10",
+    "createdAt": "2023-03-20 12:12:04",
+    "createdBy": 1,
+    "updatedAt": "2023-03-20 12:12:04",
+    "updatedBy": 1
+}
+
+
+
+////////////////////////////////////////////////
+
+GET
+get role by id
+http://localhost:3000/role?id=1
+
+Query Params id
+
+
+
+{"id":1,"name":"super admin","createdAt":"2023-03-16T09:43:00.000Z","updatedAt":"2023-03-16T09:43:00.000Z","createdBy":1,"updatedBy":1,"deletedBy":null,"deleteAt":null}
+////////////////////////////////////////////////
+
+PUT
+
+update role
+http://localhost:3000/role
+
+
+Body format 
+{
+     "name":string,
+    "createdAt": datetime,
+    "createdBy": number,
+    id:number,
+    "updatedAt": datetime,
+    "updatedBy": number
+}
+json
+{
+    "name": "Testuser",
+    
+    "createdAt":"2023-03-16 15:13:00",
+    "createdBy":2,
+    "id":3,
+    "updatedAt": "2023-03-16 15:13:00",
+     "updatedBy":2
+    
+}
+
+
+////////////////////////////////////////////////
+
+PATCH
+update role
+http://localhost:3000/role
+Add request description…
+Body format 
+{
+     "name":string, optional
+    "createdAt": datetime, optional
+    "createdBy": number, optional
+    id:number, required
+    "updatedAt": datetime, optional
+    "updatedBy": number optional
+}
+text
+{
+    "name": "Testuser3",
+
+    "id":3
+  
+    
+}
+
+
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+User
+////////////////////////////////////////////////
+
+POST
+create new user
+http://localhost:3000/user
+
+Body format {
+    "username":"string",
+    "password":"string",
+    "roleid":number,
+    "createdAt":datetime,
+    "updatedAt":datetime,
+    "createdBy" : number,
+    "updatedBy":number
+}
+json
+{
+    "username":"Test21",
+    "password":"Test21",
+    "roleid":2,
+    "createdAt":"2023-03-16 15:13:00",
+    "updatedAt":"2023-03-16 15:13:00",
+    "createdBy" : 2,
+    "updatedBy":2
+}
+
+////////////////////////////////////////////////
+
+GET
+get user by id
+http://localhost:3000/user?id=2
+Add request description…
+Query Params
+id
+2
+////////////////////////////////////////////////
+
+GET
+pagination
+http://localhost:3000/user?page=1&limit=10
+
+Query Params
+
+page
+1
+
+limit
+10
+////////////////////////////////////////////////
+
+GET
+get All users
+http://localhost:3000/user?limit=10&offset=5&order=desc&orderCol=id
+
+Query Params
+limit
+10
+
+offset
+5
+
+order
+desc
+
+orderCol
+id
+////////////////////////////////////////////////
+PUT
+update user
+http://localhost:3000/user
+Body format {
+    "username":"string",
+    "password":"string",
+    "roleid":number,
+    id:number,
+    "createdAt":datetime,
+    "updatedAt":datetime,
+    "createdBy" : number,
+    "updatedBy":number
+}
+raw (json)
+json
+{
+    "username": "Test",
+    "password": "Test21",
+    "roleid":2,
+    
+    
+    "updatedAt": "2023-03-16 15:13:00",
+     "updatedBy":2
+    
+}
+
+////////////////////////////////////////////////
+
+PATCH
+update user
+Body format {
+    "username":"string", optional
+    "password":"string",optional
+    "roleid":number,optional
+    role:number required
+    "createdAt":datetime,optional
+    "updatedAt":datetime,
+    "createdBy" : number,
+    "updatedBy":number optional
+}
+http://localhost:3000/user
+
+json
+{
+    "updatedBy": 2,
+    "id":2
+   
+}
